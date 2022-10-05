@@ -13,6 +13,7 @@ function App() {
   
   return (
     <div>
+      Test
       <input placeholder='Message....'/>
       <button onClick={sendMessage}>Send Message</button>
     </div>
