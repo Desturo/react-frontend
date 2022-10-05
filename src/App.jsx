@@ -1,0 +1,23 @@
+//import React, { useState, useEffect } from 'react';
+import io from 'socket.io-client';
+
+//const socket = io.connect(process.env.REACT_APP_SERVER_URL);
+
+console.log(process.env.REACT_APP_SERVER_URL);
+
+function App() {
+
+  const sendMessage = () => {
+    //socket.emit('')
+    console.log("test");
+  }
+  
+  return (
+    <div>
+      <input placeholder='Message....'/>
+      <button onClick={sendMessage}>Send Message</button>
+    </div>
+  );
+}
+
+export default App;
