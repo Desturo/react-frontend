@@ -11,13 +11,10 @@ function App() {
     console.log(socket.id)
   }
 
-  const myStyle = {
-    color: "pink",
-    backgroundColor: "black"
-  }
+  
   
   return (
-    <div style={myStyle}>
+    <div>
       Test
       <input placeholder='Message....'/>
       <button onClick={sendMessage}>Send Message</button>
