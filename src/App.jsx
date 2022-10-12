@@ -10,9 +10,14 @@ function App() {
   const sendMessage = () => {
     console.log(socket.id)
   }
+
+  const myStyle = {
+    color: "pink",
+    backgroundColor: "black"
+  }
   
   return (
-    <div>
+    <div style={myStyle}>
       Test
       <input placeholder='Message....'/>
       <button onClick={sendMessage}>Send Message</button>
