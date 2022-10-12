@@ -18,7 +18,7 @@ function App() {
       Test
       <input placeholder='Message....'/>
       <button onClick={sendMessage}>Send Message</button>
-      <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla cum illo earum saepe alias culpa, eos impedit. Soluta a aperiam, nulla, odio amet quia adipisci nostrum perspiciatis deleniti perferendis quibusdam!</div>
+      <div>Hallo das ist ein test</div>
     </div>
   );
 }
