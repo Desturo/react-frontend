@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,900&display=swap');
+
+* {
+    padding: 0.1rem;
+}
+
 body {
-    color: pink;
-    background-color: black;
+    color: #fbf1c7;
+    background-color: #1d2021;
+    font-family: 'Roboto Mono';
+    font-size: medium;
 }
 
 li {
@@ -12,4 +20,30 @@ li {
     flex-direction: column-reverse;
     height: 55vh;
     overflow-y: scroll;
+}
+
+input {
+    background: none;
+    border-style: solid;
+    border-radius: .5rem;
+    padding: .2rem;
+    color: #fbf1c7;
+    font-family: 'Roboto Mono';
+    font-size: medium;
+}
+
+input:focus {
+    outline: none;
+    border-color: #fabd2f;
+}
+
+input[type=number] {
+    width: 4rem;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+
+    opacity: 1;
+
 }

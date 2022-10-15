@@ -9,7 +9,7 @@ function App() {
   const [recievedMessages, setRecievedMessages] = useState([])
   const [name, setName] = useState('')
   const [dice, setDice] = useState([])
-  const [diceValue, setDiceValue] = useState(0)
+  const [diceValue, setDiceValue] = useState(1)
   
   useEffect(() => {
     socket.on('message-recieve', (data) => {
@@ -39,14 +39,14 @@ function App() {
   return (
     <div>
       <div>
-        <input placeholder='Name....' onChange={(e) => { setName(e.target.value) }} value={name}/>
+        <input id='nameInput' placeholder='Name....' onChange={(e) => { setName(e.target.value) }} value={name}/>
       </div>
-      Schicke eine Nachricht:
-      <input placeholder='Message....' onChange={(e) => { setMessage(e.target.value) }} value={message}/>
+      <label htmlFor="messageInput"></label> Schicke eine Nachricht: 
+      <input id='messageInput' placeholder='Message....' onChange={(e) => { setMessage(e.target.value) }} value={message}/>
       <button onClick={sendMessage}>Nachricht Abschicken</button>
       <div>
         <button onClick={addDice}>Würfel hinzufügen</button>
-        <input type="number" value={diceValue} onChange={(e) => { setDiceValue(e.target.value) }}/>
+        <input min={1} type="number" value={diceValue} onChange={(e) => { setDiceValue(e.target.value)}}/>
         <div>{dice.map((item, key) => { return(<button key={"würfel"+key} onClick={(e) => { sendRoll(item) }} >W{item}</button>) })}</div>
       </div>
       <div id='messageContainer'>
