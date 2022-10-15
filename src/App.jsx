@@ -52,7 +52,7 @@ function App() {
       <div>
         <ul>
           {recievedMessages.map((item, key) => { 
-            if(!dice) {
+            if(!item.dice) {
               if(item.user === 'Du') {
                 return(<li key={"message"+key}>{'Du sagst: ' + item.message}</li>)
               } else {
