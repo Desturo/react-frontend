@@ -14,7 +14,7 @@ function App() {
       console.log('Message: ' + data.message);
       setRecievedMessages([...recievedMessages, data.message])
     })
-  }, [])
+  }, [recievedMessages])
   
   
   const sendMessage = () => {
