@@ -8,7 +8,13 @@ function App() {
 
   const sendMessage = () => {
     socket.emit('message-send', message)
+    setMessage('')
   }
+
+  socket.on('message-recieve', (data) => { 
+    console.log('User: ' + data.user);
+    console.log('Message: ' + data.message);
+   })
 
   const [message, setMessage] = useState('')
 
