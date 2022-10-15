@@ -1,7 +1,7 @@
 //import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 
-const socket = io.connect("http://localhost:3500");
+const socket = io.connect("https://desturo.de");
 
 
 function App() {
