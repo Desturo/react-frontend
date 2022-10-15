@@ -2,3 +2,7 @@ body {
     color: pink;
     background-color: black;
 }
+
+li {
+    list-style: none;
+}
