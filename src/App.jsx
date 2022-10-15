@@ -13,21 +13,21 @@ function App() {
   
   useEffect(() => {
     socket.on('message-recieve', (data) => {
-      setRecievedMessages([...recievedMessages, { user: data.user, message: data.message, dice: data.dice}])
+      setRecievedMessages([...recievedMessages, { user: data.user, message: data.message, dice: data.dice, diceValue: data.diceValue}])
     })
   }, [recievedMessages])
   
   
   const sendMessage = () => {
-    socket.emit('message-send', {user: name, message: message, dice: false})
-    setRecievedMessages([...recievedMessages, {user: 'Du', message: message, dice: false}])
+    socket.emit('message-send', {user: name, message: message, dice: false, diceValue: null})
+    setRecievedMessages([...recievedMessages, {user: 'Du', message: message, dice: false, diceValue: null}])
     setMessage('')
   }
 
   const sendRoll = (diceNumber) => { 
     var rolledNumber = Math.floor(Math.random() * diceNumber) + 1;
-    socket.emit('message-send', {user: name, message: rolledNumber, dice: true})
-    setRecievedMessages([...recievedMessages, { user: 'Du', message: rolledNumber, dice: true}])
+    socket.emit('message-send', {user: name, message: rolledNumber, dice: true, diceValue: diceNumber})
+    setRecievedMessages([...recievedMessages, { user: 'Du', message: rolledNumber, dice: true, diceValue: diceNumber}])
    }
 
   const addDice = () => {
@@ -60,9 +60,9 @@ function App() {
               }
             }else {
               if(item.user === 'Du') {
-                return(<li key={"message"+key}>{'Du hast eine: ' + item.message + ' gewürfelt.'}</li>)
+                return(<li key={"message"+key}>{'Du hast mit einem W' + item.diceValue + ' eine: ' + item.message + ' gewürfelt.'}</li>)
               }else {
-                return(<li key={"message"+key}>{item.user + ' hat eine: ' + item.message + ' gewürfelt.'}</li>)
+                return(<li key={"message"+key}>{item.user + ' hat mit einem W' + item.diceValue +' eine: ' + item.message + ' gewürfelt.'}</li>)
               }
             }
           })}
