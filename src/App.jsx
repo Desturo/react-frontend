@@ -49,8 +49,8 @@ function App() {
         <input type="number" value={diceValue} onChange={(e) => { setDiceValue(e.target.value) }}/>
         <div>{dice.map((item, key) => { return(<button key={"würfel"+key} onClick={(e) => { sendRoll(item) }} >W{item}</button>) })}</div>
       </div>
-      <div>
-        <ul>
+      <div id='messageContainer'>
+        <ul id='messageList'>
           {recievedMessages.map((item, key) => { 
             if(!item.dice) {
               if(item.user === 'Du') {
