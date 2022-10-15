@@ -18,7 +18,7 @@ function App() {
   
   const sendMessage = () => {
     socket.emit('message-send', {user: name, message: message})
-    setRecievedMessages([...recievedMessages, message])
+    setRecievedMessages([...recievedMessages, {user: 'You', message: message}])
     setMessage('')
   }
 
