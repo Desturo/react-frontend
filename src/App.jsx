@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 
 const socket = io.connect("https://desturo.de");
@@ -6,15 +6,20 @@ const socket = io.connect("https://desturo.de");
 
 function App() {
 
+  useEffect(() => {
+    socket.on('message-recieve', (data) => { 
+      console.log('User: ' + data.user);
+      console.log('Message: ' + data.message);
+    })
+  }, [])
+  
+
   const sendMessage = () => {
     socket.emit('message-send', message)
     setMessage('')
   }
 
-  socket.on('message-recieve', (data) => { 
-    console.log('User: ' + data.user);
-    console.log('Message: ' + data.message);
-   })
+  
 
   const [message, setMessage] = useState('')
 
