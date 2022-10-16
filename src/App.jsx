@@ -57,9 +57,9 @@ function App() {
       <button id='sendMessage' onClick={sendMessage}>Senden</button>
       <div>
         <button id='addDiceButton' onClick={addDice}>Würfel hinzufügen</button>
-        <button id='numberUp' onClick={() => { changeNumber(true, diceValue, setDiceValue, true, 0) }}>Up</button>
+        <button id='numberDown' onClick={() => { changeNumber(false, diceValue, setDiceValue, true, 0) }}>{"-"}</button>
         <input min={1} type="number" value={diceValue} onChange={(e) => { setDiceValue(e.target.value)}}/>
-        <button id='numberDown' onClick={() => { changeNumber(false, diceValue, setDiceValue, true, 0) }}>Down</button>
+        <button id='numberUp' onClick={() => { changeNumber(true, diceValue, setDiceValue, true, 0) }}>{"+"}</button>
         <div>{dice.map((item, key) => { return(<button key={"würfel"+key} onClick={() => { sendRoll(item) }} >W{item}</button>) })}</div>
       </div>
       <div id='messageContainer'>

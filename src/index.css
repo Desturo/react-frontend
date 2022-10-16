@@ -62,12 +62,16 @@ input[type=number] {
 }
 
 #numberUp {    
+    margin-left: 0;
+    border-radius: 0rem .5rem .5rem 0rem;
+}
+
+#numberDown {
     border-right-width: 0;
     border-radius: .5rem 0rem 0rem .5rem;
     margin-right: 0;
 }
 
-#numberDown {
-    margin-left: 0;
-    border-radius: 0rem .5rem .5rem 0rem;
+.arrow {
+    fill: #fbf1c7;
 }
