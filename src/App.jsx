@@ -28,7 +28,18 @@ function App() {
     var rolledNumber = Math.floor(Math.random() * diceNumber) + 1;
     socket.emit('message-send', {user: name, message: rolledNumber, dice: true, diceValue: diceNumber})
     setRecievedMessages([...recievedMessages, { user: 'Du', message: rolledNumber, dice: true, diceValue: diceNumber}])
-   }
+  }
+
+  const changeNumber = (up, number, setNumber, min = false, minValue = null) => {
+
+    if (up) {
+      setNumber(number + 1)
+    }else {
+      if (min) {
+        number - 1 <= 0 ? setNumber(number) : setNumber(number - 1)
+      }
+    }
+}
 
   const addDice = () => {
     setDice([...dice, diceValue])
@@ -41,13 +52,15 @@ function App() {
       <div>
         <input id='nameInput' placeholder='Name....' onChange={(e) => { setName(e.target.value) }} value={name}/>
       </div>
-      <label htmlFor="messageInput"></label> Schicke eine Nachricht: 
+      <label id='messageLabel' htmlFor="messageInput">Nachricht Schicken</label>
       <input id='messageInput' placeholder='Message....' onChange={(e) => { setMessage(e.target.value) }} value={message}/>
-      <button onClick={sendMessage}>Nachricht Abschicken</button>
+      <button id='sendMessage' onClick={sendMessage}>Senden</button>
       <div>
-        <button onClick={addDice}>Würfel hinzufügen</button>
+        <button id='addDiceButton' onClick={addDice}>Würfel hinzufügen</button>
+        <button id='numberUp' onClick={() => { changeNumber(true, diceValue, setDiceValue, true, 0) }}>Up</button>
         <input min={1} type="number" value={diceValue} onChange={(e) => { setDiceValue(e.target.value)}}/>
-        <div>{dice.map((item, key) => { return(<button key={"würfel"+key} onClick={(e) => { sendRoll(item) }} >W{item}</button>) })}</div>
+        <button id='numberDown' onClick={() => { changeNumber(false, diceValue, setDiceValue, true, 0) }}>Down</button>
+        <div>{dice.map((item, key) => { return(<button key={"würfel"+key} onClick={() => { sendRoll(item) }} >W{item}</button>) })}</div>
       </div>
       <div id='messageContainer'>
         <ul id='messageList'>
